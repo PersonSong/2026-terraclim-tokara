@@ -1,0 +1,303 @@
+.dashboard {
+  position: relative;
+  min-height: 100vh;
+  background: var(--tokara-bg);
+  font-family: var(--font-body);
+  color: var(--tokara-text);
+  text-align: left;
+}
+
+/* ── Header banner ── */
+
+.dashboard-header {
+  background: var(--tokara-green);
+  padding: 20px 24px;
+}
+
+.dashboard-header__top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.dashboard-header__brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.dashboard-header__mark {
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: var(--tokara-green-dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-heading);
+  font-size: 18px;
+  color: var(--tokara-green-highlight);
+}
+
+.dashboard-header__farm-name {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--tokara-bg);
+  line-height: 1.2;
+}
+
+.dashboard-header__region {
+  margin: 2px 0 0;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  color: var(--tokara-green-muted);
+}
+
+.dashboard-header__meta {
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.dashboard-header__date,
+.dashboard-header__weather {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  color: var(--tokara-green-muted);
+}
+
+.dashboard-header__weather {
+  margin-top: 3px;
+  color: #6a8a68;
+}
+
+.dashboard-header__greeting {
+  background: var(--tokara-green-dark);
+  border-radius: 12px;
+  padding: 12px 16px;
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--tokara-green-pale);
+}
+
+.dashboard-header__greeting-name {
+  color: var(--tokara-green-highlight);
+  font-weight: 500;
+}
+
+/* ── Content ── */
+
+.dashboard-content {
+  padding: 20px 24px 96px;
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.dashboard-section-title {
+  margin: 0 0 12px;
+  font-family: var(--font-heading);
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--tokara-text);
+}
+
+.dashboard-status-text {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--tokara-text-muted);
+}
+
+/* ── Summary counts row ── */
+
+.summary-row {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 24px;
+}
+
+.summary-card {
+  flex: 1;
+  text-align: center;
+  border-radius: 12px;
+  border: 1px solid;
+  padding: 10px 8px;
+}
+
+.summary-card__count {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 22px;
+  font-weight: 500;
+}
+
+.summary-card__label {
+  margin: 2px 0 0;
+  font-family: var(--font-mono);
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+}
+
+.summary-card--irrigate {
+  background: var(--status-irrigate-light);
+  border-color: var(--status-irrigate-border);
+}
+.summary-card--irrigate .summary-card__count,
+.summary-card--irrigate .summary-card__label {
+  color: var(--status-irrigate-bg);
+}
+
+.summary-card--review {
+  background: var(--status-review-light);
+  border-color: var(--status-review-border);
+}
+.summary-card--review .summary-card__count,
+.summary-card--review .summary-card__label {
+  color: var(--status-review-bg);
+}
+
+.summary-card--hold {
+  background: var(--status-hold-light);
+  border-color: var(--status-hold-border);
+}
+.summary-card--hold .summary-card__count,
+.summary-card--hold .summary-card__label {
+  color: var(--status-hold-bg);
+}
+
+/* ── Priority block list ── */
+
+.priority-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.priority-card {
+  display: block;
+  text-align: left;
+  background: var(--tokara-card-bg);
+  border: 1px solid var(--tokara-card-border);
+  border-radius: 12px;
+  padding: 14px 16px;
+  text-decoration: none;
+  color: inherit;
+  transition: border-color 0.15s ease;
+}
+
+.priority-card:hover {
+  border-color: var(--tokara-card-border-hover);
+}
+
+.priority-card__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 6px;
+}
+
+.priority-card__id-cultivar {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  min-width: 0;
+}
+
+.priority-card__id {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--tokara-text-muted);
+  flex-shrink: 0;
+}
+
+.priority-card__cultivar {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--tokara-text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.priority-card__reason {
+  margin: 0;
+  font-size: 12px;
+  line-height: 1.4;
+  color: var(--tokara-text-muted);
+}
+
+.priority-card__meta {
+  margin: 4px 0 0;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--tokara-text-faintest);
+}
+
+/* ── Status badge ── */
+
+.status-badge {
+  display: inline-block;
+  flex-shrink: 0;
+  padding: 3px 8px;
+  border-radius: 4px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+}
+
+.status-badge--irrigate {
+  background: var(--status-irrigate-bg);
+  color: var(--status-irrigate-text);
+}
+
+.status-badge--review {
+  background: var(--status-review-bg);
+  color: var(--status-review-text);
+}
+
+.status-badge--hold {
+  background: var(--status-hold-bg);
+  color: var(--status-hold-text);
+}
+
+/* ── Floating chat button ── */
+
+.chat-button {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  border: none;
+  background: var(--tokara-green);
+  color: var(--tokara-bg);
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 6px 18px rgba(44, 31, 15, 0.25);
+  transition:
+    background 0.15s ease,
+    transform 0.1s ease;
+}
+
+.chat-button:hover {
+  background: var(--tokara-green-dark);
+}
+
+.chat-button:active {
+  transform: scale(0.95);
+}

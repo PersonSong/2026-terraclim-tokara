@@ -1,0 +1,56 @@
+[
+  {
+    "block_id": "A1",
+    "date": "2024-02-15",
+    "stage": "Veraison",
+    "phenology_note": "50% color change observed on east-facing rows"
+  },
+  {
+    "block_id": "A2",
+    "date": "2024-02-15",
+    "stage": "Berry Development",
+    "phenology_note": "Berries pea-sized, canopy trimmed last week"
+  },
+  {
+    "block_id": "A3",
+    "date": "2024-02-15",
+    "stage": "Veraison",
+    "phenology_note": "Uniform color change across block"
+  },
+  {
+    "block_id": "B1",
+    "date": "2024-02-15",
+    "stage": "Veraison",
+    "phenology_note": "Slight lag on north edge, possible shade stress"
+  },
+  {
+    "block_id": "B2",
+    "date": "2024-02-15",
+    "stage": "Berry Development",
+    "phenology_note": "Bunch thinning completed"
+  },
+  {
+    "block_id": "B3",
+    "date": "2024-02-15",
+    "stage": "Pre-Veraison",
+    "phenology_note": "Green berries, sugar accumulation not yet started"
+  },
+  {
+    "block_id": "C1",
+    "date": "2024-02-15",
+    "stage": "Veraison",
+    "phenology_note": "Advanced veraison, consider harvest window in 3-4 weeks"
+  },
+  {
+    "block_id": "C2",
+    "date": "2024-02-15",
+    "stage": "Berry Development",
+    "phenology_note": "Even growth, no signs of stress"
+  },
+  {
+    "block_id": "C3",
+    "date": "2024-02-15",
+    "stage": "Pre-Veraison",
+    "phenology_note": "Later-ripening block, monitoring closely"
+  }
+]

@@ -1,0 +1,77 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": { "BLOCK": "A1", "CULTIVAR": "Cabernet Sauvignon" },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[18.860, -33.920], [18.863, -33.920], [18.863, -33.923], [18.860, -33.923], [18.860, -33.920]]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": { "BLOCK": "A2", "CULTIVAR": "Chardonnay" },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[18.864, -33.920], [18.867, -33.920], [18.867, -33.923], [18.864, -33.923], [18.864, -33.920]]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": { "BLOCK": "A3", "CULTIVAR": "Sauvignon Blanc" },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[18.868, -33.920], [18.871, -33.920], [18.871, -33.923], [18.868, -33.923], [18.868, -33.920]]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": { "BLOCK": "B1", "CULTIVAR": "Merlot" },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[18.860, -33.924], [18.863, -33.924], [18.863, -33.927], [18.860, -33.927], [18.860, -33.924]]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": { "BLOCK": "B2", "CULTIVAR": "Shiraz" },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[18.864, -33.924], [18.867, -33.924], [18.867, -33.927], [18.864, -33.927], [18.864, -33.924]]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": { "BLOCK": "B3", "CULTIVAR": "Pinotage" },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[18.868, -33.924], [18.871, -33.924], [18.871, -33.927], [18.868, -33.927], [18.868, -33.924]]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": { "BLOCK": "C1", "CULTIVAR": "Chenin Blanc" },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[18.860, -33.928], [18.863, -33.928], [18.863, -33.931], [18.860, -33.931], [18.860, -33.928]]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": { "BLOCK": "C2", "CULTIVAR": "Semillon" },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[18.864, -33.928], [18.867, -33.928], [18.867, -33.931], [18.864, -33.931], [18.864, -33.928]]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": { "BLOCK": "C3", "CULTIVAR": "Petit Verdot" },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[18.868, -33.928], [18.871, -33.928], [18.871, -33.931], [18.868, -33.931], [18.868, -33.928]]]
+      }
+    }
+  ]
+}

@@ -1,0 +1,110 @@
+[
+  {
+    "date": "2024-02-15",
+    "season": "2023/2024",
+    "block_id": "A1",
+    "cultivar": "Cabernet Sauvignon",
+    "eto_mm": 6.2,
+    "eta_mm": 5.8,
+    "kc": 0.85,
+    "ndvi": 0.62,
+    "depletion_mm": 28.4,
+    "status": "irrigate"
+  },
+  {
+    "date": "2024-02-15",
+    "season": "2023/2024",
+    "block_id": "A2",
+    "cultivar": "Chardonnay",
+    "eto_mm": 6.0,
+    "eta_mm": 5.1,
+    "kc": 0.78,
+    "ndvi": 0.58,
+    "depletion_mm": 17.2,
+    "status": "review"
+  },
+  {
+    "date": "2024-02-15",
+    "season": "2023/2024",
+    "block_id": "A3",
+    "cultivar": "Sauvignon Blanc",
+    "eto_mm": 6.1,
+    "eta_mm": 4.9,
+    "kc": 0.75,
+    "ndvi": 0.55,
+    "depletion_mm": 9.6,
+    "status": "hold"
+  },
+  {
+    "date": "2024-02-15",
+    "season": "2023/2024",
+    "block_id": "B1",
+    "cultivar": "Merlot",
+    "eto_mm": 6.3,
+    "eta_mm": 5.9,
+    "kc": 0.87,
+    "ndvi": 0.64,
+    "depletion_mm": 26.1,
+    "status": "irrigate"
+  },
+  {
+    "date": "2024-02-15",
+    "season": "2023/2024",
+    "block_id": "B2",
+    "cultivar": "Shiraz",
+    "eto_mm": 6.0,
+    "eta_mm": 5.3,
+    "kc": 0.80,
+    "ndvi": 0.60,
+    "depletion_mm": 18.9,
+    "status": "review"
+  },
+  {
+    "date": "2024-02-15",
+    "season": "2023/2024",
+    "block_id": "B3",
+    "cultivar": "Pinotage",
+    "eto_mm": 5.9,
+    "eta_mm": 4.5,
+    "kc": 0.72,
+    "ndvi": 0.52,
+    "depletion_mm": 7.3,
+    "status": "hold"
+  },
+  {
+    "date": "2024-02-15",
+    "season": "2023/2024",
+    "block_id": "C1",
+    "cultivar": "Chenin Blanc",
+    "eto_mm": 6.2,
+    "eta_mm": 5.7,
+    "kc": 0.84,
+    "ndvi": 0.61,
+    "depletion_mm": 31.5,
+    "status": "irrigate"
+  },
+  {
+    "date": "2024-02-15",
+    "season": "2023/2024",
+    "block_id": "C2",
+    "cultivar": "Semillon",
+    "eto_mm": 6.1,
+    "eta_mm": 5.0,
+    "kc": 0.77,
+    "ndvi": 0.57,
+    "depletion_mm": 16.4,
+    "status": "review"
+  },
+  {
+    "date": "2024-02-15",
+    "season": "2023/2024",
+    "block_id": "C3",
+    "cultivar": "Petit Verdot",
+    "eto_mm": 5.8,
+    "eta_mm": 4.2,
+    "kc": 0.70,
+    "ndvi": 0.50,
+    "depletion_mm": 5.9,
+    "status": "hold"
+  }
+]

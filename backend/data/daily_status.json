@@ -9,7 +9,10 @@
     "kc": 0.85,
     "ndvi": 0.62,
     "depletion_mm": 28.4,
-    "status": "irrigate"
+    "status": "irrigate",
+    "reason": "Cumulative deficit of 28 mm exceeds the irrigation threshold",
+    "last_irrigated": "2024-02-10",
+    "hectares": 2.3
   },
   {
     "date": "2024-02-15",
@@ -21,7 +24,10 @@
     "kc": 0.78,
     "ndvi": 0.58,
     "depletion_mm": 17.2,
-    "status": "review"
+    "status": "review",
+    "reason": "ETa/ETo ratio softening — monitor before next irrigation cycle",
+    "last_irrigated": "2024-02-13",
+    "hectares": 1.8
   },
   {
     "date": "2024-02-15",
@@ -33,7 +39,10 @@
     "kc": 0.75,
     "ndvi": 0.55,
     "depletion_mm": 9.6,
-    "status": "hold"
+    "status": "hold",
+    "reason": "Soil moisture within target range, no action needed",
+    "last_irrigated": "2024-02-14",
+    "hectares": 1.5
   },
   {
     "date": "2024-02-15",
@@ -45,7 +54,10 @@
     "kc": 0.87,
     "ndvi": 0.64,
     "depletion_mm": 26.1,
-    "status": "irrigate"
+    "status": "irrigate",
+    "reason": "Deficit tracking above threshold following a warm week",
+    "last_irrigated": "2024-02-11",
+    "hectares": 2.6
   },
   {
     "date": "2024-02-15",
@@ -57,7 +69,10 @@
     "kc": 0.80,
     "ndvi": 0.60,
     "depletion_mm": 18.9,
-    "status": "review"
+    "status": "review",
+    "reason": "Approaching review threshold — recheck in 2 days",
+    "last_irrigated": "2024-02-13",
+    "hectares": 1.9
   },
   {
     "date": "2024-02-15",
@@ -69,7 +84,10 @@
     "kc": 0.72,
     "ndvi": 0.52,
     "depletion_mm": 7.3,
-    "status": "hold"
+    "status": "hold",
+    "reason": "Low demand this week, moisture levels adequate",
+    "last_irrigated": "2024-02-14",
+    "hectares": 1.4
   },
   {
     "date": "2024-02-15",
@@ -81,7 +99,10 @@
     "kc": 0.84,
     "ndvi": 0.61,
     "depletion_mm": 31.5,
-    "status": "irrigate"
+    "status": "irrigate",
+    "reason": "Highest deficit on the estate at 31 mm — prioritize today",
+    "last_irrigated": "2024-02-09",
+    "hectares": 2.1
   },
   {
     "date": "2024-02-15",
@@ -93,7 +114,10 @@
     "kc": 0.77,
     "ndvi": 0.57,
     "depletion_mm": 16.4,
-    "status": "review"
+    "status": "review",
+    "reason": "NDVI trending down slightly — verify canopy in field",
+    "last_irrigated": "2024-02-12",
+    "hectares": 1.7
   },
   {
     "date": "2024-02-15",
@@ -105,6 +129,9 @@
     "kc": 0.70,
     "ndvi": 0.50,
     "depletion_mm": 5.9,
-    "status": "hold"
+    "status": "hold",
+    "reason": "Minimal depletion, next check in 3 days",
+    "last_irrigated": "2024-02-14",
+    "hectares": 1.6
   }
 ]

@@ -107,36 +107,57 @@ All data used is from the **Tokara Vineyard Datapack**, supplied directly by Ter
 
 ```text
 2026-terraclim-tokara/
-├── backend/
+├── README.md
+├── requirements.txt
+├── .gitignore
+│
+├── backend/                       # FastAPI app
 │   ├── app/
-│   │   └── main.py
-│   ├── data/
+│   │   ├── __init__.py
+│   │   └── main.py                # /blocks, /status, /block/{id}/history
+│   ├── data/                      # real Tokara dataset (57 blocks)
 │   │   ├── blocks.geojson
 │   │   ├── daily_status.json
 │   │   └── phenology_stage.json
 │   └── requirements.txt
 │
-├── scripts/
+├── frontend/                      
+│   ├── index.html, package.json, vite.config.ts, tsconfig*.json
+│   ├── public/                    
+│   └── src/
+│       ├── App.tsx, main.tsx      # routes: / , /demo/* (login/signup/dashboard/block/:id)
+│       ├── api.ts                 # typed API client
+│       ├── constants.ts           # DEMO_DATE
+│       ├── theme.css
+│       ├── components/
+│       │   ├── AuthShell.*, GrapeIcon.tsx
+│       │   ├── DemoLayout.tsx, PhoneFrame.*
+│       │   └── VineyardMap.*      # Leaflet map + search + layer toggles
+│       ├── hooks/useRoutePrefix.ts
+│       ├── lib/farmReport.ts      # narrative/indicator/recommendation logic
+│       └── pages/
+│           ├── Login.tsx, Signup.tsx
+│           ├── Dashboard.*, Block.*
+│
+├── scripts/                       
+│   ├── requirements.txt
 │   ├── zonal_stats_and_depletion.py
 │   ├── phenology_validation.py
-│   ├── build_real_data.py
-│   └── requirements.txt
+│   ├── build_real_data.py         
+│   ├── fix_season_format.py
+│   └── rerun_stage_validation.py
 │
-└── frontend/
-    └── src/
-        ├── api.ts
-        ├── constants.ts
-        ├── theme.css
-        ├── lib/
-        │   └── farmReport.ts
-        ├── components/
-        │   ├── PhoneFrame.tsx
-        │   └── VineyardMap.tsx
-        └── pages/
-            ├── Login.tsx
-            ├── Signup.tsx
-            ├── Dashboard.tsx
-            └── Block.tsx
+├── pipeline_raw/
+│   ├── Tokara_Pheno_Data.xlsx
+│   ├── block_depletion.csv
+│   ├── phenology_stage_windows.csv        
+│   ├── zonal_stats_long.csv
+│   └── zonal_stats_wide.csv         
+└── outputPH/
+│   ├── phenology_stage_windows.csv
+|   └── phenology_validation.csv
+
+
 ```
 
 ---

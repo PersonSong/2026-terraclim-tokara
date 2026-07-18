@@ -273,33 +273,3 @@
   color: var(--tokara-text-muted);
 }
 
-/* ── Floating chat button ── */
-
-.chat-button {
-  position: fixed;
-  right: 24px;
-  bottom: 24px;
-  width: 52px;
-  height: 52px;
-  border-radius: 50%;
-  border: none;
-  background: var(--tokara-green);
-  color: var(--tokara-bg);
-  font-size: 20px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  box-shadow: 0 6px 18px rgba(44, 31, 15, 0.25);
-  transition:
-    background 0.15s ease,
-    transform 0.1s ease;
-}
-
-.chat-button:hover {
-  background: var(--tokara-green-dark);
-}
-
-.chat-button:active {
-  transform: scale(0.95);
-}

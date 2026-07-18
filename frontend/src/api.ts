@@ -51,7 +51,13 @@ export type HistoryResponse = DailyStatus[]
 async function request<T>(path: string, options?: RequestInit): Promise<T> {
   const response = await fetch(`${API_URL}${path}`, options)
   if (!response.ok) {
-    throw new Error(`API request failed: ${response.status} ${response.statusText}`)
+    // Surface the backend's `detail` message when present (e.g. FastAPI's
+    // HTTPException body) instead of just the generic status text.
+    const detail = await response
+      .json()
+      .then((body: { detail?: string }) => body.detail)
+      .catch(() => undefined)
+    throw new Error(detail ?? `API request failed: ${response.status} ${response.statusText}`)
   }
   return response.json()
 }
@@ -66,4 +72,16 @@ export function getStatus(date: string): Promise<StatusResponse> {
 
 export function getBlockHistory(blockId: string): Promise<HistoryResponse> {
   return request(`/block/${blockId}/history`)
+}
+
+export interface ChatResponse {
+  reply: string
+}
+
+export function sendChatMessage(message: string, date: string): Promise<ChatResponse> {
+  return request('/chat', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ message, date }),
+  })
 }

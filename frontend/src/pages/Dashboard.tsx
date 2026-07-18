@@ -8,6 +8,7 @@ import {
   sortByDepletionDescending,
 } from '../lib/farmReport'
 import VineyardMap from '../components/VineyardMap'
+import ChatWidget from '../components/ChatWidget'
 import './Dashboard.css'
 
 // Static placeholder — no live weather API integrated. Chosen to be
@@ -137,9 +138,7 @@ function Dashboard() {
         <VineyardMap date={DEMO_DATE} />
       </div>
 
-      <button type="button" className="chat-button" aria-label="Open vineyard assistant">
-        🌿
-      </button>
+      <ChatWidget date={DEMO_DATE} />
     </div>
   )
 }

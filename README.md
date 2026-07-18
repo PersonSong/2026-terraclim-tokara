@@ -18,7 +18,7 @@
 
 Tokara Vineyard Watch is a decision-support dashboard built for the TerraClim ET-GEO Hackathon by TerraBytes. It turns raw evapotranspiration rasters, satellite vegetation data, and field-recorded vineyard phenology into a single daily triage view: which blocks need water today, why, and how confident the recommendation is.
 
-The problem it addresses: irrigation decisions on a working wine estate depend on combining several imperfect signals — weather-driven water demand, satellite-derived canopy health, and a farm's own historical growth-stage records, none of which, on their own, tells a farmer what to do this morning. Tokara Vineyard Watch fuses these into a per-block Irrigate / Review / Hold recommendation, explains the reasoning in plain language, and cross-checks the satellite signal against the farm's own recorded phenology so the farmer knows how much to trust it.
+The problem it addresses: irrigation decisions on a working wine estate depend on combining several imperfect signals — weather-driven water demand, satellite-derived canopy health, and a farm's own historical growth-stage records — none of which, on their own, tells a farmer what to do this morning. Tokara Vineyard Watch fuses these into a per-block Irrigate / Review / Hold recommendation, explains the reasoning in plain language, and cross-checks the satellite signal against the farm's own recorded phenology so the farmer knows how much to trust it.
 
 The dashboard is built mobile-first, styled to match how a farmer might actually check it before heading out into the vineyard, and includes a sign-up flow for a second farm to demonstrate how the same approach generalises beyond a single estate.
 
@@ -44,6 +44,7 @@ Tokara Vineyard Watch addresses both problems: it does the fusion work (ETo → 
 | **Interactive Block Map** | All 70 vineyard block polygons, colour-coded by status, toggleable by NDVI / ETo / ETa / water-deficit layer |
 | **Cultivar Search** | Type-ahead search that highlights matching blocks on the map by grape variety |
 | **Block Detail View** | Season-long ETa vs ETo trend chart and phenology note for any individual block |
+| **Vineyard Assistant** | A chat popup, grounded in the current day's real block data, that answers questions about today's status and irrigation recommendations |
 | **Sign-up Flow** | Demonstrates how the same tool would onboard a second farm, showing the concept's extensibility beyond Tokara |
 
 The farmer opens the dashboard once each morning. The Farm Status Report tells them, in plain language, what needs attention and why. The block list lets them drill into anything specific; the map lets them see it spatially; the search lets them check a particular variety at a glance.
@@ -60,6 +61,7 @@ Every recommendation follows the same pipeline:
 4. A **running water-balance depletion** is tracked per block, per season, accumulating daily ETa until it crosses a stage-specific threshold, at which point the block is flagged **Irrigate**, **Review**, or left at **Hold**.
 5. **Growth stage** is independently inferred two ways: from the farm's own recorded phenology dates (ground truth, with real gaps where a stage was never recorded), and from the shape of the Kc/NDVI trend itself (what the satellite data alone implies). These two are compared to produce a trust label: **agrees**, **disagrees**, or **stage-record-incomplete**.
 6. The result is rendered as a plain-language recommendation, a status badge, and a trust badge — not a raw table of numbers.
+7. A chat assistant, grounded in that same day's block data, is available for follow-up questions — it is explicitly scoped to Tokara Vineyard Watch and will decline questions outside that scope rather than improvise an answer.
 
 ---
 
@@ -121,70 +123,35 @@ All data used is from the **Tokara Vineyard Datapack**, supplied directly by Ter
 │   │   └── phenology_stage.json
 │   └── requirements.txt
 │
-├──frontend/
-|   ├── public/
-|   ├── src/
-│   |   ├── assets/
-│   │   ├── hero.png
-│   │   ├── react.svg
-│   │   └── vite.svg
-│   ├── components/
-│   │   ├── AuthShell.css
-│   │   ├── AuthShell.tsx
-│   │   ├── DemoLayout.tsx
-│   │   ├── GrapeIcon.tsx
-│   │   ├── PhoneFrame.css
-│   │   ├── PhoneFrame.tsx
-│   │   ├── VineyardMap.css
-│   │   └── VineyardMap.tsx
-│   ├── hooks/
-│   │   └── useRoutePrefix.ts
-│   ├── lib/
-│   │   └── farmReport.ts
-│   ├── pages/
-│   │   ├── Block.css
-│   │   ├── Block.tsx
-│   │   ├── Dashboard.css
-│   │   ├── Dashboard.tsx
-│   │   ├── Login.tsx
-│   │   └── Signup.tsx
-│   ├── App.css
-│   ├── App.tsx
-│   ├── api.ts
-│   ├── constants.ts
-│   ├── index.css
-│   ├── main.tsx
-│   └── theme.css
-├── .gitignore
-├── .oxlintrc.json
-├── README.md
-├── index.html
-├── package-lock.json
-├── package.json
-├── tsconfig.app.json
-├── tsconfig.json
-├── tsconfig.node.json
-└── vite.config.ts
+├── frontend/                      # React + Vite app
+│   ├── index.html, package.json, vite.config.ts, tsconfig*.json
+│   ├── public/                    # favicon, icons
+│   └── src/
+│       ├── App.tsx, main.tsx      # routes: / , /demo/* (login/signup/dashboard/block/:id)
+│       ├── api.ts                 # typed API client
+│       ├── constants.ts           # DEMO_DATE
+│       ├── theme.css
+│       ├── components/
+│       │   ├── AuthShell.*, GrapeIcon.tsx
+│       │   ├── DemoLayout.tsx, PhoneFrame.*
+│       │   └── VineyardMap.*      # Leaflet map + search + layer toggles
+│       ├── hooks/useRoutePrefix.ts
+│       ├── lib/farmReport.ts      # narrative/indicator/recommendation logic
+│       └── pages/
+│           ├── Login.tsx, Signup.tsx
+│           ├── Dashboard.*, Block.*
 │
-├── scripts/                       
+├── scripts/                       # data pipeline (separate venv/requirements)
 │   ├── requirements.txt
 │   ├── zonal_stats_and_depletion.py
 │   ├── phenology_validation.py
-│   ├── build_real_data.py         
+│   ├── build_real_data.py         # merges real data into backend/data/*.json
 │   ├── fix_season_format.py
 │   └── rerun_stage_validation.py
 │
-├── pipeline_raw/
-│   ├── Tokara_Pheno_Data.xlsx
-│   ├── block_depletion.csv
-│   ├── phenology_stage_windows.csv        
-│   ├── zonal_stats_long.csv
-│   └── zonal_stats_wide.csv         
+├── pipeline_raw/                  # raw pipeline inputs (CSVs, xlsx)
 └── outputPH/
-│   ├── phenology_stage_windows.csv
-|   └── phenology_validation.csv
-
-
+    └── phenology_validation.csv
 ```
 
 ---
@@ -214,6 +181,14 @@ py -3.12 -m venv .venv
 .venv\Scripts\Activate.ps1
 pip install -r requirements.txt
 ```
+
+Create a `backend/.env` file (gitignored, never committed) containing a Gemini API key, required for the Vineyard Assistant chat feature:
+
+```env
+GEMINI_API_KEY=your-key-here
+```
+
+Get a free key with no billing setup required at [aistudio.google.com](https://aistudio.google.com) → "Get API Key". See `backend/.env.example` for the expected variable name. The dashboard, map, and search all work without this key — only the chat assistant depends on it.
 
 ### 3. Set up the frontend
 
@@ -302,7 +277,11 @@ Use the search bar above the map to type a grape variety (e.g. "Chenin Blanc"). 
 
 Click any block on the map to open its detail page: a season-long chart of ETa vs ETo, and the specific phenology note explaining the trust label for that block.
 
-### 7. Sign Up (extensibility demo)
+### 7. Ask the Vineyard Assistant
+
+Click the floating chat icon (bottom-right corner) to open the Vineyard Assistant. Ask something like *"Which block has the highest water deficit today, and what should I do about it?"* — the response is grounded in that day's real block data, not a generic answer, and can be cross-checked directly against the dashboard. Asking something unrelated to the farm (e.g. "what's the weather forecast for next week?") should trigger a polite refusal rather than an improvised answer.
+
+### 8. Sign Up (extensibility demo)
 
 From the login screen, select **Sign Up** to see the onboarding form for a second, hypothetical farm — demonstrating how the same tool would extend beyond Tokara. This is a UX demonstration only; it does not provision a real second dataset.
 
@@ -350,7 +329,8 @@ Portions of this codebase were developed with AI assistance (Claude Code), used 
 - Phenology recording has real gaps in the source data — not every growth stage was tracked for every block and season. Coverage of the trust-label validation is uneven as a direct result, and this is stated honestly rather than treated as uniform.
 - 13 of the 70 shapefile polygons represent mixed sub-parcel plantings sharing a block code with more than one cultivar; the current build associates each polygon with its own recorded cultivar rather than collapsing them.
 - Authentication is a UI demonstration only; no real user accounts or multi-tenant data isolation are implemented.
-- A conversational assistant for interpreting map/dashboard results was scoped but not included in this submission — see Next Steps.
+- The Vineyard Assistant depends on a live call to Google's Gemini API — if that API is slow, unavailable, or rate-limited, the assistant will show an error rather than an answer. The rest of the dashboard (map, status report, search) does not depend on this API and is unaffected.
+- Data sent to the Gemini API (the day's block status summary and the user's question) leaves the local environment and is subject to Google's standard API data-handling terms; this is disclosed here for transparency rather than treated as a production-ready confidentiality guarantee.
 
 ---
 

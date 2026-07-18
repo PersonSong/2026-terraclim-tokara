@@ -1,0 +1,70 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=DM+Sans:wght@400;500&family=DM+Mono:wght@400;500&display=swap');
+
+:root {
+  --tokara-bg: #f5f0e8;
+  --tokara-green: #3d5a3e;
+  --tokara-green-dark: #2d4430;
+  --tokara-green-muted: #8aaa88;
+  --tokara-green-pale: #b8d0b0;
+  --tokara-green-highlight: #e8d8b8;
+
+  --tokara-card-bg: #ede8de;
+  --tokara-card-border: #d8ceb0;
+  --tokara-card-border-hover: #b0a880;
+
+  --tokara-text: #2c1f0f;
+  --tokara-text-muted: #7a6e5c;
+  --tokara-text-faint: #9a8e78;
+  --tokara-text-faintest: #b0a880;
+
+  --tokara-accent: #c17f2a;
+  --tokara-accent-dark: #a86e22;
+
+  --tokara-input-bg: #ede8de;
+  --tokara-input-border: #c8be9e;
+
+  --status-irrigate-bg: #b83232;
+  --status-irrigate-text: #fff8f0;
+  --status-irrigate-light: #fde8e8;
+  --status-irrigate-border: #e0a0a0;
+
+  --status-review-bg: #b8781a;
+  --status-review-text: #fff8f0;
+  --status-review-light: #fdf3e2;
+  --status-review-border: #e0c070;
+
+  --status-hold-bg: #3d5a3e;
+  --status-hold-text: #f0f5ef;
+  --status-hold-light: #e8f0e7;
+  --status-hold-border: #90b888;
+
+  /* Choropleth ramps for the vineyard map's non-status layers */
+  --map-ndvi-low: #d9e6c3;
+  --map-ndvi-high: #2d4430;
+  --map-eto-low: #fdf3e2;
+  --map-eto-high: #b8781a;
+  --map-eta-low: #d7e6ee;
+  --map-eta-high: #2f5770;
+
+  --font-heading: 'Playfair Display', serif;
+  --font-mono: 'DM Mono', monospace;
+  --font-body: 'DM Sans', system-ui, sans-serif;
+}
+
+/* Generic utility classes shared across pages/components — kept here
+   (rather than a single page's stylesheet) so they're styled correctly
+   no matter which route is the first one loaded. */
+
+.section-title {
+  margin: 0 0 12px;
+  font-family: var(--font-heading);
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--tokara-text);
+}
+
+.status-text {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--tokara-text-muted);
+}

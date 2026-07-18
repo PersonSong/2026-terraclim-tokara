@@ -1,5 +1,29 @@
-data/
+# --- Raster / GeoTIFF data ---
+/data/
 outputs/
+*.tif
+*.tiff
+
+# --- Python (backend) ---
 venv/
+.venv/
 __pycache__/
 *.pyc
+*.pyo
+*.egg-info/
+
+# --- Node (frontend) ---
+node_modules/
+frontend/dist/
+frontend/.vite/
+
+# --- Env / secrets ---
+.env
+.env.*
+!.env.example
+
+# --- Editor / OS ---
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

@@ -38,7 +38,33 @@
   --status-hold-light: #e8f0e7;
   --status-hold-border: #90b888;
 
+  /* Choropleth ramps for the vineyard map's non-status layers */
+  --map-ndvi-low: #d9e6c3;
+  --map-ndvi-high: #2d4430;
+  --map-eto-low: #fdf3e2;
+  --map-eto-high: #b8781a;
+  --map-eta-low: #d7e6ee;
+  --map-eta-high: #2f5770;
+
   --font-heading: 'Playfair Display', serif;
   --font-mono: 'DM Mono', monospace;
   --font-body: 'DM Sans', system-ui, sans-serif;
+}
+
+/* Generic utility classes shared across pages/components — kept here
+   (rather than a single page's stylesheet) so they're styled correctly
+   no matter which route is the first one loaded. */
+
+.section-title {
+  margin: 0 0 12px;
+  font-family: var(--font-heading);
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--tokara-text);
+}
+
+.status-text {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--tokara-text-muted);
 }

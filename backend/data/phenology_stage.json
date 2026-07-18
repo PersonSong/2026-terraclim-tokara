@@ -1,9 +1,57 @@
 [
   {
     "block_id": "A1",
+    "date": "2024-01-26",
+    "stage": "Berry Development",
+    "phenology_note": "Berries pea-sized, canopy growth vigorous"
+  },
+  {
+    "block_id": "A1",
+    "date": "2024-01-31",
+    "stage": "Berry Development",
+    "phenology_note": "Berries swelling, canopy trimmed"
+  },
+  {
+    "block_id": "A1",
+    "date": "2024-02-05",
+    "stage": "Pre-Veraison",
+    "phenology_note": "Green berries, sugar accumulation not yet started"
+  },
+  {
+    "block_id": "A1",
+    "date": "2024-02-10",
+    "stage": "Veraison",
+    "phenology_note": "Early color change on scattered berries"
+  },
+  {
+    "block_id": "A1",
     "date": "2024-02-15",
     "stage": "Veraison",
     "phenology_note": "50% color change observed on east-facing rows"
+  },
+  {
+    "block_id": "A2",
+    "date": "2024-01-26",
+    "stage": "Flowering",
+    "phenology_note": "Flowering underway, early cap-fall on lower rows"
+  },
+  {
+    "block_id": "A2",
+    "date": "2024-01-31",
+    "stage": "Flowering",
+    "phenology_note": "Flowering ~60% complete across block"
+  },
+  {
+    "block_id": "A2",
+    "date": "2024-02-05",
+    "stage": "Fruit Set",
+    "phenology_note": "Fruit set beginning, small green berries forming"
+  },
+  {
+    "block_id": "A2",
+    "date": "2024-02-10",
+    "stage": "Berry Development",
+    "phenology_note": "Berry development steady, no signs of stress"
   },
   {
     "block_id": "A2",
@@ -13,9 +61,57 @@
   },
   {
     "block_id": "A3",
+    "date": "2024-01-26",
+    "stage": "Berry Development",
+    "phenology_note": "Berries pea-sized, canopy growth vigorous"
+  },
+  {
+    "block_id": "A3",
+    "date": "2024-01-31",
+    "stage": "Berry Development",
+    "phenology_note": "Berries swelling, canopy trimmed"
+  },
+  {
+    "block_id": "A3",
+    "date": "2024-02-05",
+    "stage": "Pre-Veraison",
+    "phenology_note": "Berries firm and green, approaching veraison"
+  },
+  {
+    "block_id": "A3",
+    "date": "2024-02-10",
+    "stage": "Veraison",
+    "phenology_note": "Color change spreading through the block"
+  },
+  {
+    "block_id": "A3",
     "date": "2024-02-15",
     "stage": "Veraison",
     "phenology_note": "Uniform color change across block"
+  },
+  {
+    "block_id": "B1",
+    "date": "2024-01-26",
+    "stage": "Berry Development",
+    "phenology_note": "Berry development steady, no signs of stress"
+  },
+  {
+    "block_id": "B1",
+    "date": "2024-01-31",
+    "stage": "Berry Development",
+    "phenology_note": "Berries pea-sized, canopy growth vigorous"
+  },
+  {
+    "block_id": "B1",
+    "date": "2024-02-05",
+    "stage": "Pre-Veraison",
+    "phenology_note": "Green berries, sugar accumulation not yet started"
+  },
+  {
+    "block_id": "B1",
+    "date": "2024-02-10",
+    "stage": "Veraison",
+    "phenology_note": "Early color change on scattered berries"
   },
   {
     "block_id": "B1",
@@ -25,9 +121,57 @@
   },
   {
     "block_id": "B2",
+    "date": "2024-01-26",
+    "stage": "Flowering",
+    "phenology_note": "Flowering complete, awaiting fruit set"
+  },
+  {
+    "block_id": "B2",
+    "date": "2024-01-31",
+    "stage": "Flowering",
+    "phenology_note": "Flowering underway, early cap-fall on lower rows"
+  },
+  {
+    "block_id": "B2",
+    "date": "2024-02-05",
+    "stage": "Fruit Set",
+    "phenology_note": "Fruit set complete, uniform berry count"
+  },
+  {
+    "block_id": "B2",
+    "date": "2024-02-10",
+    "stage": "Berry Development",
+    "phenology_note": "Berries swelling, canopy trimmed"
+  },
+  {
+    "block_id": "B2",
     "date": "2024-02-15",
     "stage": "Berry Development",
     "phenology_note": "Bunch thinning completed"
+  },
+  {
+    "block_id": "B3",
+    "date": "2024-01-26",
+    "stage": "Fruit Set",
+    "phenology_note": "Fruit set beginning, small green berries forming"
+  },
+  {
+    "block_id": "B3",
+    "date": "2024-01-31",
+    "stage": "Berry Development",
+    "phenology_note": "Berry development steady, no signs of stress"
+  },
+  {
+    "block_id": "B3",
+    "date": "2024-02-05",
+    "stage": "Berry Development",
+    "phenology_note": "Berries pea-sized, canopy growth vigorous"
+  },
+  {
+    "block_id": "B3",
+    "date": "2024-02-10",
+    "stage": "Berry Development",
+    "phenology_note": "Berries swelling, canopy trimmed"
   },
   {
     "block_id": "B3",
@@ -37,15 +181,87 @@
   },
   {
     "block_id": "C1",
+    "date": "2024-01-26",
+    "stage": "Berry Development",
+    "phenology_note": "Berry development steady, no signs of stress"
+  },
+  {
+    "block_id": "C1",
+    "date": "2024-01-31",
+    "stage": "Berry Development",
+    "phenology_note": "Berries pea-sized, canopy growth vigorous"
+  },
+  {
+    "block_id": "C1",
+    "date": "2024-02-05",
+    "stage": "Pre-Veraison",
+    "phenology_note": "Berries firm and green, approaching veraison"
+  },
+  {
+    "block_id": "C1",
+    "date": "2024-02-10",
+    "stage": "Veraison",
+    "phenology_note": "Color change spreading through the block"
+  },
+  {
+    "block_id": "C1",
     "date": "2024-02-15",
     "stage": "Veraison",
     "phenology_note": "Advanced veraison, consider harvest window in 3-4 weeks"
   },
   {
     "block_id": "C2",
+    "date": "2024-01-26",
+    "stage": "Flowering",
+    "phenology_note": "Flowering ~60% complete across block"
+  },
+  {
+    "block_id": "C2",
+    "date": "2024-01-31",
+    "stage": "Flowering",
+    "phenology_note": "Flowering complete, awaiting fruit set"
+  },
+  {
+    "block_id": "C2",
+    "date": "2024-02-05",
+    "stage": "Fruit Set",
+    "phenology_note": "Fruit set complete, uniform berry count"
+  },
+  {
+    "block_id": "C2",
+    "date": "2024-02-10",
+    "stage": "Berry Development",
+    "phenology_note": "Berries swelling, canopy trimmed"
+  },
+  {
+    "block_id": "C2",
     "date": "2024-02-15",
     "stage": "Berry Development",
     "phenology_note": "Even growth, no signs of stress"
+  },
+  {
+    "block_id": "C3",
+    "date": "2024-01-26",
+    "stage": "Fruit Set",
+    "phenology_note": "Fruit set beginning, small green berries forming"
+  },
+  {
+    "block_id": "C3",
+    "date": "2024-01-31",
+    "stage": "Berry Development",
+    "phenology_note": "Berry development steady, no signs of stress"
+  },
+  {
+    "block_id": "C3",
+    "date": "2024-02-05",
+    "stage": "Berry Development",
+    "phenology_note": "Berries pea-sized, canopy growth vigorous"
+  },
+  {
+    "block_id": "C3",
+    "date": "2024-02-10",
+    "stage": "Berry Development",
+    "phenology_note": "Berries swelling, canopy trimmed"
   },
   {
     "block_id": "C3",

@@ -1,0 +1,177 @@
+.vineyard-map {
+  margin-top: 24px;
+}
+
+.vineyard-map__row {
+  display: flex;
+  align-items: stretch;
+  gap: 8px;
+}
+
+.vineyard-map__container {
+  flex: 1;
+  min-width: 0;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid var(--tokara-card-border);
+}
+
+.vineyard-map__leaflet {
+  width: 100%;
+  height: 200px;
+  background: var(--tokara-card-bg);
+  font-family: var(--font-body);
+}
+
+.vineyard-map__toggles {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  width: 54px;
+  flex-shrink: 0;
+}
+
+.map-toggle {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 4px 2px;
+  border-radius: 10px;
+  border: 1px solid var(--tokara-input-border);
+  background: var(--tokara-card-bg);
+  color: var(--tokara-text-muted);
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.05em;
+  line-height: 1.25;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.map-toggle--active {
+  background: var(--tokara-green);
+  border-color: var(--tokara-green);
+  color: var(--tokara-bg);
+}
+
+.vineyard-map__legend {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px 14px;
+  margin-top: 8px;
+  min-height: 14px;
+}
+
+.vineyard-map__legend-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-mono);
+  font-size: 9px;
+  color: var(--tokara-text-muted);
+}
+
+.vineyard-map__legend-swatch {
+  width: 10px;
+  height: 10px;
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+.vineyard-map__legend-caption {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 9px;
+  color: var(--tokara-text-muted);
+}
+
+.vineyard-map__search {
+  margin-bottom: 16px;
+}
+
+.vineyard-map__search-box {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.vineyard-map__search-input {
+  width: 100%;
+  box-sizing: border-box;
+  background: var(--tokara-input-bg);
+  border: 1px solid var(--tokara-input-border);
+  border-radius: 12px;
+  padding: 10px 36px 10px 14px;
+  font-size: 13px;
+  font-family: var(--font-body);
+  color: var(--tokara-text);
+  outline: none;
+  transition: border-color 0.15s ease;
+}
+
+.vineyard-map__search-input:focus {
+  border-color: var(--tokara-green);
+}
+
+.vineyard-map__search-input::placeholder {
+  color: var(--tokara-text-faintest);
+}
+
+.vineyard-map__search-clear {
+  position: absolute;
+  right: 10px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  line-height: 1;
+  color: var(--tokara-text-muted);
+  padding: 4px;
+}
+
+.vineyard-map__search-hint {
+  margin: 8px 0 0;
+  font-size: 11px;
+  color: var(--tokara-text-muted);
+}
+
+.vineyard-map__search-dropdown {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  right: 0;
+  /* Leaflet's own panes go up to z-index 700 (tooltipPane 650, popupPane 700),
+     so this needs to clear all of them to sit visually above the map. */
+  z-index: 1000;
+  margin: 0;
+  padding: 4px;
+  list-style: none;
+  background: var(--tokara-bg);
+  border: 1px solid var(--tokara-card-border);
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(44, 31, 15, 0.14);
+  max-height: 220px;
+  overflow-y: auto;
+}
+
+.vineyard-map__search-option {
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-size: 13px;
+  color: var(--tokara-text);
+  cursor: pointer;
+}
+
+.vineyard-map__search-option--active {
+  background: var(--tokara-card-bg);
+  color: var(--tokara-green);
+}
+
+/* Block hover tooltips must win over everything in this section, including
+   the search dropdown above, so they're never clipped or hidden underneath. */
+.vineyard-map .leaflet-tooltip-pane {
+  z-index: 2000;
+}

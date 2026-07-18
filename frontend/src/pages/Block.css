@@ -1,0 +1,66 @@
+.block-detail {
+  min-height: 100vh;
+  background: var(--tokara-bg);
+  font-family: var(--font-body);
+  color: var(--tokara-text);
+  text-align: left;
+}
+
+.block-detail__header {
+  background: var(--tokara-green);
+  padding: 20px 24px;
+}
+
+.block-detail__id {
+  margin: 0 0 4px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  color: var(--tokara-green-muted);
+}
+
+.block-detail__cultivar {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--tokara-bg);
+  line-height: 1.2;
+}
+
+.block-detail__content {
+  padding: 20px 24px 40px;
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.block-detail__chart {
+  background: var(--tokara-card-bg);
+  border: 1px solid var(--tokara-card-border);
+  border-radius: 12px;
+  padding: 12px 8px 4px;
+}
+
+.block-detail__note {
+  margin-top: 20px;
+  background: var(--tokara-card-bg);
+  border: 1px solid var(--tokara-card-border);
+  border-radius: 12px;
+  padding: 14px 16px;
+}
+
+.block-detail__note-label {
+  margin: 0 0 6px;
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--tokara-text-muted);
+}
+
+.block-detail__note-text {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--tokara-text);
+}

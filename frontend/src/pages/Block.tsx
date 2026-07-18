@@ -41,8 +41,8 @@ function Block() {
   const chartData =
     history?.map((row) => ({
       date: formatShortDate(row.date),
-      ETo: row.eto_mm,
-      ETa: row.eta_mm,
+      ETo: Math.round(row.eto_mm * 10) / 10,
+      ETa: Math.round(row.eta_mm * 10) / 10,
     })) ?? []
 
   const latest = history && history.length > 0 ? history[history.length - 1] : null

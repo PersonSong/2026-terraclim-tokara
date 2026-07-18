@@ -10,12 +10,21 @@ import {
 import VineyardMap from '../components/VineyardMap'
 import './Dashboard.css'
 
-// Static demo values — no live weather API for this scaffold.
-const DEMO_DATE_LABEL = '17 JUL 2026'
-const DEMO_WEATHER_LABEL = '12°C · NW 18 km/h'
+// Static placeholder — no live weather API integrated. Chosen to be
+// seasonally plausible for Stellenbosch in December (Southern Hemisphere
+// summer), not an actual forecast.
+const DEMO_WEATHER_LABEL = '24°C · SE 15 km/h'
 const GREETING_NAME = 'André'
 
 const STATUS_LABELS: BlockStatus[] = ['irrigate', 'review', 'hold']
+
+function formatHeaderDate(isoDate: string): string {
+  const date = new Date(`${isoDate}T00:00:00`)
+  return date
+    .toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' })
+    .replace(/[  ]/g, ' ') // normalize non-breaking spaces some locales insert
+    .toUpperCase()
+}
 
 function Dashboard() {
   const [blocks, setBlocks] = useState<StatusResponse | null>(null)
@@ -54,7 +63,7 @@ function Dashboard() {
             </div>
           </div>
           <div className="dashboard-header__meta">
-            <p className="dashboard-header__date">{DEMO_DATE_LABEL}</p>
+            <p className="dashboard-header__date">{formatHeaderDate(DEMO_DATE)}</p>
             <p className="dashboard-header__weather">{DEMO_WEATHER_LABEL}</p>
           </div>
         </div>

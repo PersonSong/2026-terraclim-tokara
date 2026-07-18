@@ -19,6 +19,8 @@ export interface BlocksResponse {
   features: BlockFeature[]
 }
 
+export type TrustLabel = 'agrees' | 'disagrees' | 'stage-record-incomplete'
+
 export interface DailyStatus {
   date: string
   season: string
@@ -26,13 +28,15 @@ export interface DailyStatus {
   cultivar: string
   eto_mm: number
   eta_mm: number
-  kc: number
-  ndvi: number
+  // Kc/NDVI come from satellite passes, not daily rasters — null on most
+  // dates (and on every block for at least one real demo date).
+  kc: number | null
+  ndvi: number | null
   depletion_mm: number
   status: BlockStatus
-  reason: string
-  last_irrigated: string
-  hectares: number
+  recorded_stage: string | null
+  implied_stage: string | null
+  trust_label: TrustLabel
 }
 
 export interface StatusEntry extends DailyStatus {

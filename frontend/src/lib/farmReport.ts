@@ -18,9 +18,6 @@ export interface Recommendation {
   why: string
 }
 
-const IRRIGATE_THRESHOLD_MM = 25
-const REVIEW_THRESHOLD_MM = 15
-
 function formatList(items: string[]): string {
   if (items.length === 0) return 'no blocks'
   if (items.length === 1) return items[0]
@@ -68,7 +65,7 @@ export function buildFarmNarrative(blocks: StatusEntry[]): FarmNarrative {
       : `All ${total} blocks are within target moisture range today — no irrigation needed.`
 
   const sentence2 = highest
-    ? `${highest.block_id} (${highest.cultivar}) has the highest water deficit on the estate at ${highest.depletion_mm}mm.`
+    ? `${highest.block_id} (${highest.cultivar}) has the highest water deficit on the estate at ${highest.depletion_mm.toFixed(1)}mm.`
     : ''
 
   const healthCopy: Record<HealthLevel, string> = {
@@ -84,18 +81,31 @@ export function buildFarmNarrative(blocks: StatusEntry[]): FarmNarrative {
 }
 
 function depletionIndicator(block: StatusEntry): Indicator {
+  // The pipeline uses stage-specific irrigation thresholds (not a fixed mm
+  // value across all blocks/stages), and resets depletion to 0 on the same
+  // day it flags "irrigate" — so the interpretation must describe the
+  // status itself rather than assert a specific mm threshold that may not
+  // match this row's actual (stage-dependent) trigger point.
   let interpretation: string
   if (block.status === 'irrigate') {
-    interpretation = `well past the ${IRRIGATE_THRESHOLD_MM}mm irrigation threshold`
+    interpretation = 'irrigation trigger reached today, resetting the deficit tally'
   } else if (block.status === 'review') {
-    interpretation = `approaching the ${IRRIGATE_THRESHOLD_MM}mm irrigation threshold — worth monitoring`
+    interpretation = "trending toward this block's irrigation trigger for its current growth stage"
   } else {
-    interpretation = `comfortably below the ${REVIEW_THRESHOLD_MM}mm review threshold`
+    interpretation = "within a safe range for this block's current growth stage"
   }
-  return { label: 'Water deficit', value: `${block.depletion_mm}mm`, interpretation }
+  return { label: 'Water deficit', value: `${block.depletion_mm.toFixed(1)}mm`, interpretation }
 }
 
 function ndviIndicator(block: StatusEntry): Indicator {
+  // NDVI comes from satellite passes, not daily rasters — null on most dates.
+  if (block.ndvi === null) {
+    return {
+      label: 'Canopy vigor (NDVI)',
+      value: 'n/a',
+      interpretation: 'no satellite pass on this date',
+    }
+  }
   let interpretation: string
   if (block.ndvi >= 0.6) {
     interpretation = 'healthy, dense canopy'
@@ -111,6 +121,14 @@ function ndviIndicator(block: StatusEntry): Indicator {
 }
 
 function kcIndicator(block: StatusEntry): Indicator {
+  // Kc comes from satellite passes, not daily rasters — null on most dates.
+  if (block.kc === null) {
+    return {
+      label: 'Crop coefficient (Kc)',
+      value: 'n/a',
+      interpretation: 'no satellite pass on this date',
+    }
+  }
   let interpretation: string
   if (block.kc >= 0.83) {
     interpretation = 'high water demand at this growth stage'
@@ -120,6 +138,29 @@ function kcIndicator(block: StatusEntry): Indicator {
     interpretation = 'lower water demand at this growth stage'
   }
   return { label: 'Crop coefficient (Kc)', value: block.kc.toFixed(2), interpretation }
+}
+
+// recorded_stage/implied_stage arrive as raw snake_case values (unlike the
+// already-humanized `stage` field from the /status phenology join).
+function humanizeStage(stage: string): string {
+  return stage.replace(/_/g, ' ').toLowerCase()
+}
+
+/**
+ * Plain-language clause reflecting how much to trust this block's phenology
+ * stage reading, appended to the recommendation's "why".
+ */
+function trustLabelClause(block: StatusEntry): string {
+  if (block.trust_label === 'agrees' && block.recorded_stage) {
+    return ` This is consistent with confirmed ${humanizeStage(block.recorded_stage)} timing.`
+  }
+  if (block.trust_label === 'disagrees') {
+    return " Worth a field check — satellite trend and recorded growth stage don't fully agree."
+  }
+  if (block.trust_label === 'stage-record-incomplete') {
+    return ' Note: the phenology record is incomplete for this block.'
+  }
+  return ''
 }
 
 /** The indicators driving this block's status, in priority order. */
@@ -134,22 +175,27 @@ export function getBlockIndicators(block: StatusEntry): Indicator[] {
  */
 export function getRecommendation(block: StatusEntry, indicators: Indicator[]): Recommendation {
   const [deficit, canopy] = indicators
+  const trustClause = trustLabelClause(block)
+  const canopyClause =
+    block.ndvi !== null
+      ? ` and canopy vigor (${canopy.value}) shows the vine is still active and drawing water`
+      : ''
 
   if (block.status === 'irrigate') {
     return {
       action: 'Irrigate today',
-      why: `Water deficit is at ${deficit.value}, ${deficit.interpretation}, and canopy vigor (${canopy.value}) shows the vine is still active and drawing water — delaying risks stress during a critical growth stage.`,
+      why: `Water deficit is at ${deficit.value}, ${deficit.interpretation}${canopyClause} — delaying risks stress during a critical growth stage.${trustClause}`,
     }
   }
   if (block.status === 'review') {
     return {
       action: 'Review in the next few days',
-      why: `Water deficit is at ${deficit.value}, ${deficit.interpretation}, so it's worth rechecking soil moisture before scheduling irrigation.`,
+      why: `Water deficit is at ${deficit.value}, ${deficit.interpretation}, so it's worth rechecking soil moisture before scheduling irrigation.${trustClause}`,
     }
   }
   return {
     action: 'Hold — no action needed',
-    why: `Water deficit remains at ${deficit.value}, ${deficit.interpretation}, so the block is comfortably within target range.`,
+    why: `Water deficit remains at ${deficit.value}, ${deficit.interpretation}, so the block is comfortably within target range.${trustClause}`,
   }
 }
 

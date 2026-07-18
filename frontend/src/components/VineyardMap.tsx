@@ -61,7 +61,8 @@ function rampColor(value: number, min: number, max: number, low: string, high: s
   )
 }
 
-function extent(values: number[]): [number, number] {
+function extent(values: number[]): [number, number] | null {
+  if (values.length === 0) return null
   return [Math.min(...values), Math.max(...values)]
 }
 
@@ -93,8 +94,9 @@ function VineyardMap({ date }: VineyardMapProps) {
 
   const ranges = useMemo(() => {
     if (!status || status.length === 0) return null
+    const ndviValues = status.map((s) => s.ndvi).filter((v): v is number => v !== null)
     return {
-      ndvi: extent(status.map((s) => s.ndvi)),
+      ndvi: extent(ndviValues),
       eto: extent(status.map((s) => s.eto_mm)),
       eta: extent(status.map((s) => s.eta_mm)),
     }
@@ -169,9 +171,12 @@ function VineyardMap({ date }: VineyardMapProps) {
     const entry = statusByBlockId.get(blockId)
     if (!entry || !ranges) return NO_DATA_COLOR
     if (layer === 'water') return STATUS_COLORS[entry.status]
-    const [min, max] = ranges[layer]
-    const { low, high } = RAMPS[layer]
     const value = layer === 'ndvi' ? entry.ndvi : layer === 'eto' ? entry.eto_mm : entry.eta_mm
+    const range = ranges[layer]
+    // No satellite pass for this block/date (ndvi) or no valid range at all — show as no-data.
+    if (value === null || !range) return NO_DATA_COLOR
+    const [min, max] = range
+    const { low, high } = RAMPS[layer]
     return rampColor(value, min, max, low, high)
   }
 
@@ -272,14 +277,20 @@ function VineyardMap({ date }: VineyardMapProps) {
                   attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                   url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                 />
-                {blocksGeo.features.map((feature) => {
+                {blocksGeo.features.map((feature, index) => {
                   const outerRing = feature.geometry.coordinates[0]
                   const positions: LatLngExpression[] = outerRing.map(([lon, lat]) => [lat, lon])
                   const blockId = feature.properties.BLOCK
-                  const isHighlighted = matchedBlockIds.has(blockId)
+                  // Highlight only the polygon(s) whose OWN cultivar matches — a
+                  // block with mixed sub-parcel plantings shouldn't have its
+                  // non-matching parcel highlighted just because it shares a
+                  // BLOCK code with a matching one.
+                  const isHighlighted =
+                    searchQuery.trim().length > 0 &&
+                    feature.properties.CULTIVAR.toLowerCase().includes(searchQuery.trim().toLowerCase())
                   return (
                     <Polygon
-                      key={blockId}
+                      key={`${blockId}-${index}`}
                       positions={positions}
                       pathOptions={{
                         color: isHighlighted ? HIGHLIGHT_COLOR : OUTLINE_COLOR,

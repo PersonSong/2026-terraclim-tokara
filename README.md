@@ -121,23 +121,50 @@ All data used is from the **Tokara Vineyard Datapack**, supplied directly by Ter
 │   │   └── phenology_stage.json
 │   └── requirements.txt
 │
-├── frontend/                      
-│   ├── index.html, package.json, vite.config.ts, tsconfig*.json
-│   ├── public/                    
-│   └── src/
-│       ├── App.tsx, main.tsx      # routes: / , /demo/* (login/signup/dashboard/block/:id)
-│       ├── api.ts                 # typed API client
-│       ├── constants.ts           # DEMO_DATE
-│       ├── theme.css
-│       ├── components/
-│       │   ├── AuthShell.*, GrapeIcon.tsx
-│       │   ├── DemoLayout.tsx, PhoneFrame.*
-│       │   └── VineyardMap.*      # Leaflet map + search + layer toggles
-│       ├── hooks/useRoutePrefix.ts
-│       ├── lib/farmReport.ts      # narrative/indicator/recommendation logic
-│       └── pages/
-│           ├── Login.tsx, Signup.tsx
-│           ├── Dashboard.*, Block.*
+├──frontend/
+|   ├── public/
+|   ├── src/
+│   |   ├── assets/
+│   │   ├── hero.png
+│   │   ├── react.svg
+│   │   └── vite.svg
+│   ├── components/
+│   │   ├── AuthShell.css
+│   │   ├── AuthShell.tsx
+│   │   ├── DemoLayout.tsx
+│   │   ├── GrapeIcon.tsx
+│   │   ├── PhoneFrame.css
+│   │   ├── PhoneFrame.tsx
+│   │   ├── VineyardMap.css
+│   │   └── VineyardMap.tsx
+│   ├── hooks/
+│   │   └── useRoutePrefix.ts
+│   ├── lib/
+│   │   └── farmReport.ts
+│   ├── pages/
+│   │   ├── Block.css
+│   │   ├── Block.tsx
+│   │   ├── Dashboard.css
+│   │   ├── Dashboard.tsx
+│   │   ├── Login.tsx
+│   │   └── Signup.tsx
+│   ├── App.css
+│   ├── App.tsx
+│   ├── api.ts
+│   ├── constants.ts
+│   ├── index.css
+│   ├── main.tsx
+│   └── theme.css
+├── .gitignore
+├── .oxlintrc.json
+├── README.md
+├── index.html
+├── package-lock.json
+├── package.json
+├── tsconfig.app.json
+├── tsconfig.json
+├── tsconfig.node.json
+└── vite.config.ts
 │
 ├── scripts/                       
 │   ├── requirements.txt

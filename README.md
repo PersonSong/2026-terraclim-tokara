@@ -16,9 +16,9 @@
 
 ## Overview
 
-Tokara Vineyard Watch is a decision-support dashboard built for the TerraClim ET-GEO Hackathon by TerraBytes. It turns raw evapotranspiration rasters, satellite vegetation data, and field-recorded vineyard phenology into a single daily triage view: which blocks need water today, why, and how confident the recommendation is.
+Tokara Vineyard Watch is a decision-support dashboard built for the TerraClim ET-GEO Hackathon by team TerraBytes. It turns raw evapotranspiration rasters, satellite vegetation data, and field-recorded vineyard phenology into a single daily triage view: which blocks need water today, why, and how confident the recommendation is.
 
-The problem it addresses: irrigation decisions on a working wine estate depend on combining several imperfect signals — weather-driven water demand, satellite-derived canopy health, and a farm's own historical growth-stage records — none of which, on their own, tells a farmer what to do this morning. Tokara Vineyard Watch fuses these into a per-block Irrigate / Review / Hold recommendation, explains the reasoning in plain language, and cross-checks the satellite signal against the farm's own recorded phenology so the farmer knows how much to trust it.
+The problem it addresses: irrigation decisions on a working wine estate depend on combining several imperfect signals, weather-driven water demand, satellite-derived canopy health, and a farm's own historical growth-stage records, none of which, on their own, tells a farmer what to do this morning. Tokara Vineyard Watch fuses these into a per-block Irrigate / Review / Hold recommendation, explains the reasoning in plain language, and cross-checks the satellite signal against the farm's own recorded phenology so the farmer knows how much to trust it.
 
 The dashboard is built mobile-first, styled to match how a farmer might actually check it before heading out into the vineyard, and includes a sign-up flow for a second farm to demonstrate how the same approach generalises beyond a single estate.
 
